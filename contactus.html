@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | ChargeIQ</title>
+  
+    <script src="https://cdn.tailwindcss.com"></script>
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        #map {
+            height: 256px; 
+            width: 100%;
+        }
+    </style>
+  
+    <script 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO5dtYZTDPmV30Jco6TeTiRsE86Bxt0hw&callback=initMap"
+        async defer>
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  
+    <header class="bg-white p-4 lg:px-12 flex justify-between items-center shadow-sm">
+    <div class="flex items-center space-x-2">
+            <i class="fas fa-bolt text-green-500 text-2xl"></i>
+             <a href="home.html"> <span class="font-bold text-2xl text-gray-900">ChargeIQ</span></a> 
+        </div>
+        <nav class="hidden md:flex space-x-8 text-lg font-medium text-gray-600">
+            <a href="aboutus.html" class="hover:text-green-600 transition duration-300">About Us</a>
+            <a href="pricing.html" class="hover:text-green-600 transition duration-300">Pricing</a>
+            <a href="#" class="text-green-600 font-bold transition duration-300">Contact Us</a>
+        </nav>
+    </header>
+
+ 
+    <section class="py-20 px-4 md:px-12">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-5xl font-bold text-gray-900 mb-4">Get in Touch</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
+                We'd love to hear from you. Send us a message and we'll get back to you as soon as possible.
+            </p>
+            
+            <div class="bg-white p-8 rounded-2xl shadow-xl flex flex-col md:flex-row gap-10">
+               
+                <div class="md:w-1/2 text-left">
+                    <h2 class="text-3xl font-bold mb-6">Contact Form</h2>
+                    <form action="#" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                            <input type="text" id="name" name="name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                            <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
+                            <input type="text" id="subject" name="subject" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                            <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+         
+                <div class="md:w-1/2 text-left flex flex-col justify-between p-6 bg-gray-50 rounded-xl">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-6">Our Information</h2>
+                        <ul class="space-y-4 text-gray-600">
+                            <li class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-green-500 text-2xl mr-4"></i>
+                                <div>
+                                    <h3 class="font-semibold text-lg text-gray-900">Address</h3>
+                                    <p>Thiruvananthapuram, Kerala, 695001</p>
+                                </div>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-phone-alt text-green-500 text-2xl mr-4"></i>
+                                <div>
+                                    <h3 class="font-semibold text-lg text-gray-900">Phone</h3>
+                                    <p>+91 6235904823</p>
+                                </div>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-envelope text-green-500 text-2xl mr-4"></i>
+                                <div>
+                                    <h3 class="font-semibold text-lg text-gray-900">Email</h3>
+                                    <p>joznaz6@gmail.com</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="bg-gray-800 text-gray-400 py-6 text-center mt-12 shadow-inner" style="height: 200px;">
+        <p style="padding-top: 45px;">&copy; 2025 ChargeIQ. All rights reserved.</p>
+    </footer>
+
+
+    <script>
+     
+        function initMap() {
+            const companyLocation = { lat: 8.4842, lng: 76.9248 }; 
+            const map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: companyLocation
+            });
+            const marker = new google.maps.Marker({
+                position: companyLocation,
+                map: map,
+                title: 'ChargeIQ Headquarters'
+            });
+        }
+    </script>
+
+</body>
+</html>

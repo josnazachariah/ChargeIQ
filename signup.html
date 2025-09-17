@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChargeIQ - Sign Up</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font - Inter -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-white p-4 lg:px-12 flex justify-between items-center shadow-sm">
+        <div class="flex items-center space-x-2">
+         
+           
+            <i class="fas fa-bolt text-green-500 text-2xl ml-4"></i>
+        <a href="home.html"> <span class="font-bold text-2xl text-gray-900">ChargeIQ</span></a> 
+        </div>
+        
+    </header>
+
+    <!-- Sign-Up Form Section -->
+    <main class="min-h-[calc(100vh-6rem)] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8 bg-white p-10 rounded-3xl shadow-2xl border-t-4 border-green-500">
+            <div>
+                <h2 class="mt-6 text-center text-3xl font-bold text-gray-900">
+                    Create a new account
+                </h2>
+                <p class="mt-2 text-center text-sm text-gray-600">
+                    Or
+                    <a href="#" class="font-medium text-green-600 hover:text-green-500">
+                        sign in to your existing account
+                    </a>
+                </p>
+            </div>
+            <form class="mt-8 space-y-6" action="index.html" method="get">
+                <input type="hidden" name="remember" value="true">
+                <div class="rounded-md shadow-sm -space-y-px">
+                    <div>
+                        <label for="full-name" class="sr-only">Full Name</label>
+                        <input id="full-name" name="full-name" type="text" autocomplete="name" required class="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm" placeholder="Full Name">
+                    </div>
+                    <div>
+                        <label for="email-address" class="sr-only">Email address</label>
+                        <input id="email-address" name="email" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm" placeholder="Email address">
+                    </div>
+                    <div>
+                        <label for="password" class="sr-only">Password</label>
+                        <input id="password" name="password" type="password" autocomplete="new-password" required class="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm" placeholder="Password">
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-full text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-300">
+                        Sign Up
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+
+    <br><br><br>
+
+     
+    <button onclick="goHome()"  class="bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded-full transition-colors duration-300 transform hover:bg-gray-300 hover:scale-105" style="margin-left: 40px;">
+        <i class="fas fa-arrow-left"> Back</i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        function goHome() {
+            window.location.href = "home.html"; // Redirect to home.html
+        }
+    </script>
+
+
+
+
+ 
+    <footer class="bg-white text-gray-600 py-6 text-center shadow-inner">
+        <p>&copy; 2025 ChargeIQ. All rights reserved.</p>
+    </footer>
+
+
+
+     <script>
+        const form = document.getElementById('signup-form');
+        form.addEventListener('submit', function(event) {
+            // Prevent the default form submission behavior (reloading the page)
+            event.preventDefault();
+            
+            // Redirect the user to the index.html page
+            window.location.href = 'home.html';
+        });
+    </script>
+
+</body>
+</html>

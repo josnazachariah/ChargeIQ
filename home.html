@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChargeIQ</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+
+
+
+          #glowing-box {
+            width: 600px;
+            max-width: 90%;
+            height: 25vh; 
+            padding: 30px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #00796b, #4CAF50, #004d40);
+            border-radius: 20px;
+            box-shadow: 0 0 15px 5px #4CAF50, 0 0 30px 10px #00796b;
+            animation: glow 2s infinite alternate;
+            z-index: 999;
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-left: 490px;
+            margin-top: 100px;
+            width: 550px;
+            height: 200px;
+        }
+        
+        #glowing-box h2 {
+            font-size: 2rem;
+            margin: 0 0 10px;
+            color: white;
+        }
+
+        #glowing-box p {
+            font-size: 1rem;
+            margin: 0;
+            line-height: 1.4;
+        }
+        
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px 5px #4CAF50, 0 0 20px 10px #00796b;
+            }
+            to {
+                box-shadow: 0 0 20px 8px #4CAF50, 0 0 40px 15px #00796b;
+            }
+        }
+
+
+
+
+        .hero-bg {
+            background-image: url('https://placehold.co/1920x1080/0d1223/8ab4f8?text=EV+Charging+Background');
+            background-size: cover;
+            background-position: center;
+        }
+        .chat-container {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 100%;
+            max-width: 420px;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            background-color: #f0f4f9;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .chat-header {
+            background-color: #00796b;
+            color: white;
+            padding: 1.5rem;
+            border-top-left-radius: 1.5rem;
+            border-top-right-radius: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .chat-header .close-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .chat-body {
+            flex-grow: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .message {
+            max-width: 85%;
+            padding: 0.75rem 1rem;
+            border-radius: 1.25rem;
+            word-wrap: break-word;
+        }
+        .user-message {
+            background-color: #00796b;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 0.25rem;
+        }
+        .bot-message {
+            background-color: #e2e8f0;
+            color: #1a202c;
+            align-self: flex-start;
+            border-bottom-left-radius: 0.25rem;
+        }
+        .message-input {
+            padding: 1rem;
+            background-color: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            border-bottom-left-radius: 1.5rem;
+            border-bottom-right-radius: 1.5rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+        .message-input input {
+            flex-grow: 1;
+            border: 1px solid #cbd5e0;
+            border-radius: 9999px;
+            padding: 0.75rem 1.25rem;
+            outline: none;
+        }
+        .message-input button {
+            background-color: #00796b;
+            color: white;
+            border-radius: 9999px;
+            padding: 0.75rem 1.25rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .message-input button:hover {
+            background-color: #004d40;
+        }
+        .loading-dots span {
+            animation: bounce 1s infinite;
+        }
+        .loading-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .loading-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
+        .chatbot-toggle-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #00796b;
+            color: white;
+            font-size: 2rem;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+            cursor: pointer;
+            z-index: 1001;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .chatbot-toggle-button:hover {
+            transform: scale(1.1);
+            background-color: #004d40;
+        }
+        .hidden {
+            display: none;
+        }
+
+                 .btn-grad {background-image: linear-gradient(to right, #52c234 0%, #061700  51%, #52c234  100%)}
+         .btn-grad {
+            margin: 10px;
+            padding: 15px 45px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            box-shadow: 0 0 20px #eee;
+            border-radius: 10px;
+            display: block;
+          }
+
+          .btn-grad:hover {
+            background-position: right center; 
+            color: #fff;
+            text-decoration: none;
+          }
+
+
+
+.raterev{
+background-color: #4CAF50;
+}
+
+
+
+#submit-review{
+    width: 270px;
+    margin-left: 600px;
+}
+
+
+
+
+         
+.star-rating .star {
+            color: #d1d5db; 
+            cursor: pointer;
+            transition: color 0.2s, transform 0.2s;
+        }
+       
+        .star-rating .star:hover,
+        .star-rating .star:hover ~ .star {
+            color: #f59e0b; 
+            transform: scale(1.1);
+        }
+        .star-rating .star.active {
+            color: #f59e0b; 
+        }
+        #rating-message {
+            min-height: 24px;
+            font-weight: 500;
+            color: #4b5563;
+        }
+        .confetti {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background-color: #f59e0b; /* Confetti color */
+            animation: confetti-fall 1s forwards;
+            border-radius: 50%;
+            opacity: 0;
+            z-index: 10;
+        }
+        @keyframes confetti-fall {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, 200px) scale(0.5); opacity: 0; }
+        }
+
+
+
+        
+
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+   
+    <header class="bg-white p-4 lg:px-12 flex justify-between items-center shadow-sm">
+        <div class="flex items-center space-x-2">
+            <i class="fas fa-bolt text-green-500 text-2xl"></i>
+          <a href="home.html"> <span class="font-bold text-2xl text-gray-900">ChargeIQ</span></a> 
+          
+        </div>
+        <nav class="hidden md:flex space-x-8 text-lg font-medium text-gray-600">
+            <a href="aboutus.html" class="hover:text-green-600 transition duration-300">About Us</a>
+            <a href="pricing.html" class="hover:text-green-600 transition duration-300">Pricing</a>
+            <a href="contactus.html" class="hover:text-green-600 transition duration-300">Contact Us</a>
+        </nav>
+      
+    </header>
+
+  
+    <section class="relative hero-bg bg-gray-100 py-24 lg:py-48 overflow-hidden rounded-b-[4rem] mb-12 shadow-inner">
+        <div class="absolute inset-0 bg-black opacity-50 rounded-b-[4rem]"></div>
+        <div class="container mx-auto px-6 lg:px-12 relative z-10 flex flex-col items-center justify-center text-white">
+            <h1 class="text-5xl lg:text-7xl font-bold leading-tight text-center mb-4">
+                Find. Charge. Go.
+            </h1>
+            <p class="text-2xl lg:text-3xl mb-12 text-center text-gray-200">
+                AI-powered EV Station Finder
+            </p>
+            
+
+
+
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 w-full max-w-2xl">
+                <a href="signup.html" class="w-full sm:w-1/3 text-center bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full shadow-lg transition-colors duration-300 transform hover:scale-105 btn-grad" style="width: 300px;margin-left: 180px;margin-top: 160px;">
+                    Find Charging Station
+                </a>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="container mx-auto px-6 lg:px-12 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+    
+            <div class="bg-white p-8 rounded-3xl shadow-xl border-t-4 border-green-500 transform transition-transform duration-500 hover:scale-105">
+                <div class="text-4xl text-green-500 mb-4 animate-pulse">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2">Real-time Availability</h3>
+            </div>
+           
+            <div class="bg-white p-8 rounded-3xl shadow-xl border-t-4 border-blue-500 transform transition-transform duration-500 hover:scale-105">
+                <div class="text-4xl text-blue-500 mb-4 animate-bounce">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2">AI Wait-Time Prediction</h3>
+            </div>
+         
+            <div class="bg-white p-8 rounded-3xl shadow-xl border-t-4 border-purple-500 transform transition-transform duration-500 hover:scale-105">
+                <div class="text-4xl text-purple-500 mb-4 animate-spin">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2">Seamless Navigation</h3>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+<div id="glowing-box">
+        <h2>ChargeIQ AI Chatbot</h2>
+        <p>Need help? Ask me about finding stations, prices, or how to get directions.!</p>
+    </div>
+
+<br><br><br><br><br><br><br><br>
+
+
+
+
+
+<section class="raterev">
+  <div class="relative bg-white p-8 rounded-xl shadow-2xl flex flex-col items-center"  class="raterev">
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Rate this station</h2>
+        <div class="star-rating text-4xl space-x-2" >
+            <i class="fas fa-star star"></i>
+            <i class="fas fa-star star"></i>
+            <i class="fas fa-star star"></i>
+            <i class="fas fa-star star"></i>
+            <i class="fas fa-star star"></i>
+        </div>
+        <p id="rating-message" class="mt-4 text-gray-500"></p>
+        <p class="mt-2 text-sm text-gray-400">Click on a star to submit your rating.</p>
+        
+        <div class="mt-8 w-full">
+            <textarea id="review-text" class="w-full h-32 p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Write your review here..."></textarea>
+            <button id="submit-review" class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-colors duration-300">Submit Review</button>
+        </div>
+    </div>
+
+    </section>
+
+
+
+
+
+
+
+
+ 
+    <div id="chatbot-container" class="chat-container hidden">
+        <div class="chat-header">
+            <span>ChargeIQ Bot</span>
+            <button id="close-chatbot-button" class="close-button">X</button>
+        </div>
+        <div id="chat-body" class="chat-body">
+            <div class="bot-message">Hello! I'm your ChargeIQ assistant. How can I help you?</div>
+        </div>
+        <div class="message-input">
+            <input type="text" id="user-input" placeholder="Type your message..." />
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+
+  
+    <button id="toggle-chatbot-button" class="chatbot-toggle-button">🤖</button>
+
+
+    <footer class="bg-gray-800 text-gray-400 py-6 text-center mt-12 shadow-inner" style="height: 200px;">
+        <p style="padding-top: 45px;">&copy; 2025 ChargeIQ. All rights reserved.</p>
+    </footer>
+
+
+
+    <script>
+        const chatbotContainer = document.getElementById('chatbot-container');
+        const toggleButton = document.getElementById('toggle-chatbot-button');
+        const closeButton = document.getElementById('close-chatbot-button');
+        const chatBody = document.getElementById('chat-body');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+
+        let chatHistory = [];
+        let isTyping = false;
+        
+        toggleButton.addEventListener('click', () => {
+            chatbotContainer.classList.toggle('hidden');
+        });
+
+        closeButton.addEventListener('click', () => {
+            chatbotContainer.classList.add('hidden');
+        });
+        
+        async function getGeminiResponse(prompt) {
+            isTyping = true;
+            addMessage('bot', `<div class="loading-dots flex items-end"><span class="w-2 h-2 bg-gray-500 rounded-full mr-1"></span><span class="w-2 h-2 bg-gray-500 rounded-full mr-1"></span><span class="w-2 h-2 bg-gray-500 rounded-full"></span></div>`);
+            
+            chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+            
+            const payload = {
+                contents: chatHistory
+            };
+            
+         
+            const apiKey = "AIzaSyBteVeGJpp8k-j7Q_9hBk-fRV3BeoB3XIw"; 
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API call failed with status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    chatHistory.push({ role: "model", parts: [{ text: text }] });
+                    updateLastMessage('bot', text);
+                } else {
+                    updateLastMessage('bot', "I'm sorry, I couldn't generate a response. Please try again.");
+                }
+
+            } catch (error) {
+                console.error('Error fetching data from Gemini API:', error);
+                updateLastMessage('bot', "An error occurred. Please try again later.");
+            } finally {
+                isTyping = false;
+            }
+        }
+        
+        function addMessage(sender, message) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', sender === 'user' ? 'user-message' : 'bot-message');
+            messageElement.innerHTML = message;
+            chatBody.appendChild(messageElement);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function updateLastMessage(sender, message) {
+            const lastMessage = chatBody.lastChild;
+            if (lastMessage && lastMessage.classList.contains('bot-message')) {
+                lastMessage.innerHTML = message;
+            } else {
+                addMessage(sender, message);
+            }
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+        
+        function sendMessage() {
+            const prompt = userInput.value.trim();
+            if (prompt !== '' && !isTyping) {
+                addMessage('user', prompt);
+                userInput.value = '';
+                getGeminiResponse(prompt);
+            }
+        }
+
+        sendButton.addEventListener('click', sendMessage);
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+
+
+
+
+
+
+
+    
+       
+   
+        const stars = document.querySelectorAll('.star-rating .star');
+        const ratingMessage = document.getElementById('rating-message');
+        const messages = ["Bad", "Fair", "Good", "Great", "Excellent"];
+        const reviewText = document.getElementById('review-text');
+        const submitButton = document.getElementById('submit-review');
+
+        // State to keep track of the selected rating
+        let selectedRating = 0;
+
+        // Hover effect for stars
+        stars.forEach((star, index) => {
+            star.addEventListener('mouseover', () => {
+                if (selectedRating === 0) {
+                    highlightStars(index);
+                    ratingMessage.textContent = messages[index];
+                    ratingMessage.style.color = getRatingColor(index);
+                }
+            });
+
+            star.addEventListener('mouseout', () => {
+                if (selectedRating === 0) {
+                    resetStars();
+                    ratingMessage.textContent = '';
+                }
+            });
+
+            star.addEventListener('click', () => {
+                selectedRating = index + 1;
+                highlightStars(index);
+                ratingMessage.textContent = messages[index] + "!";
+                ratingMessage.style.color = getRatingColor(index);
+                animateConfetti();
+                console.log(`You submitted a rating of ${selectedRating} stars!`);
+                // Here you would typically send the selectedRating to your backend.
+            });
+        });
+
+        // Event listener for the new submit button
+        submitButton.addEventListener('click', () => {
+            const reviewContent = reviewText.value.trim();
+            if (selectedRating > 0 && reviewContent !== '') {
+                console.log(`Review Submitted: ${reviewContent}`);
+                // Here you would send both the selectedRating and reviewContent to your backend.
+                alert('Review Submitted! Thank you for your feedback.');
+                reviewText.value = '';
+                selectedRating = 0; // Reset rating
+                resetStars();
+                ratingMessage.textContent = '';
+            } else {
+                alert('Please select a star rating and write a review before submitting.');
+            }
+        });
+
+        // Function to highlight stars up to a certain index (cumulative effect)
+        function highlightStars(index) {
+            stars.forEach((s, i) => {
+                s.classList.toggle('active', i <= index);
+            });
+        }
+
+        // Function to reset stars to their default state
+        function resetStars() {
+            stars.forEach(s => s.classList.remove('active'));
+        }
+
+        // Function to get a color based on the rating
+        function getRatingColor(index) {
+            if (index < 2) return '#ef4444'; // Red for low ratings (Bad, Fair)
+            if (index === 2) return '#f59e0b'; // Yellow for middle (Good)
+            return '#22c55e'; // Green for high ratings (Great, Excellent)
+        }
+
+        // Function to create and animate confetti
+        function animateConfetti() {
+            const confettiCount = 50;
+            const container = document.querySelector('.relative');
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.top = `${Math.random() * 50}%`;
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                container.appendChild(confetti);
+
+                confetti.addEventListener('animationend', () => {
+                    confetti.remove();
+                });
+            }
+        }
+    
+
+    </script>
+
+
+
+
+
+</body>
+</html>
